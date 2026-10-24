@@ -20,6 +20,14 @@ dependencies {
 	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 }
 
+loom {
+	runs {
+		configureEach {
+			vmArg "-XX:+AllowEnhancedClassRedefinition"
+		}
+	}
+}
+
 processResources {
 	def version = project.version
 	inputs.property "version", version

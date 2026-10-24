@@ -3,7 +3,7 @@
 	"package": "net.d3z.mixin",
 	"compatibilityLevel": "JAVA_25",
 	"mixins": [
-		"ExampleMixin"
+		"TeamSpawnpointMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

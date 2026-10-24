@@ -1,5 +1,6 @@
 package net.d3z;
 
+import net.d3z.command.TeamCommands;
 import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.resources.Identifier;
@@ -13,6 +14,7 @@ public class Manifold implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		TeamCommands.registerCommands();
 	}
 
 	public static Identifier id(String path) {
