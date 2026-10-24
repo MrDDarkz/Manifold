@@ -1,0 +1,31 @@
+{
+	"schemaVersion": 1,
+	"id": "manifold",
+	"version": "${version}",
+	"name": "Manifold",
+	"description": "Team spawnpoint",
+	"authors": [
+		"DDarkz_"
+	],
+	"contact": {
+		"homepage": "",
+		"sources": "https://github.com/MrDDarkz/Manifold"
+	},
+	"license": "AGPL-3.0-or-later",
+	"icon": "assets/manifold/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.d3z.Manifold"
+		]
+	},
+	"mixins": [
+		"manifold.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.20.1",
+		"minecraft": "~26.3",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
