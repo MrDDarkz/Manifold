@@ -56,9 +56,13 @@ public class SavedSpawnpointData extends SavedData {
     public void setSpawnpoint(String teamName, LevelData.RespawnData respawnData) {
         spawnpoints.put(teamName, respawnData);
         setDirty();
+        Manifold.LOGGER.info("{} spawnpoint saved", teamName);
     }
 
     public void deleteSpawnpoint(String teamName) {
-        if (spawnpoints.remove(teamName) != null) setDirty();
+        if (spawnpoints.remove(teamName) != null) {
+            setDirty();
+            Manifold.LOGGER.info("{} spawnpoint removed", teamName);
+        }
     }
 }

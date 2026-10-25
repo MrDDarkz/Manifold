@@ -15,6 +15,8 @@ public class Manifold implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		TeamCommands.registerCommands();
+
+		LOGGER.info("Initialization complete");
 	}
 
 	public static Identifier id(String path) {

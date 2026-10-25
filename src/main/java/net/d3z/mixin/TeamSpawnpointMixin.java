@@ -14,7 +14,7 @@ public class TeamSpawnpointMixin {
 		method = "findRespawnPositionAndUseSpawnBlock",
 		at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/portal/TeleportTransition;missingRespawnBlock(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/world/level/portal/TeleportTransition$PostTeleportTransition;)Lnet/minecraft/world/level/portal/TeleportTransition;")
 	)
-	private TeleportTransition onMissingRespawnBlock(
+	private TeleportTransition manifoldMissingRespawnBlock(
 		ServerPlayer player,
 		TeleportTransition.PostTeleportTransition post,
 		Operation<TeleportTransition> original
@@ -27,7 +27,7 @@ public class TeamSpawnpointMixin {
 		method = "findRespawnPositionAndUseSpawnBlock",
 		at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/portal/TeleportTransition;createDefault(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/world/level/portal/TeleportTransition$PostTeleportTransition;)Lnet/minecraft/world/level/portal/TeleportTransition;")
 	)
-	private TeleportTransition onCreateDefault(
+	private TeleportTransition manifoldCreateDefault(
 		ServerPlayer player,
 		TeleportTransition.PostTeleportTransition post,
 		Operation<TeleportTransition> original

@@ -1,6 +1,6 @@
 package net.d3z.command;
 
-import com.mojang.brigadier.context.CommandContext;
+import net.d3z.Manifold;
 import net.d3z.saveddata.SavedSpawnpointData;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.commands.CommandSourceStack;
@@ -30,6 +30,21 @@ public class TeamCommands {
                 .append(team.getFormattedDisplayName())
                 .append(String.format(" set to %d, %d, %d [%.1f, %.1f] %s",
                     pos.getX(), pos.getY(), pos.getZ(), respawnData.yaw(), respawnData.pitch(), level.dimension().identifier())
+                ),
+            true
+        );
+        return 1;
+    }
+
+    private static int querySpawn(final CommandSourceStack source, final PlayerTeam team) {
+        LevelData.RespawnData respawnData = SavedSpawnpointData.get(source.getServer()).getSpawnpoint(team.getName());
+        BlockPos pos = respawnData.pos();
+        ServerLevel level = source.getLevel();
+        source.sendSuccess(
+            () -> Component.literal("Spawnpoint for ")
+                .append(team.getFormattedDisplayName())
+                .append(String.format(" is: %d %d %d [%.1f, %.1f] %s",
+                pos.getX(), pos.getY(), pos.getZ(), respawnData.yaw(), respawnData.pitch(), level.dimension().identifier())
                 ),
             false
         );
@@ -67,10 +82,20 @@ public class TeamCommands {
                                         ))
                                 )
                             )
+                            .then(Commands.literal("query")
+                                .executes(
+                                    c -> querySpawn(
+                                        c.getSource(),
+                                        TeamArgument.getTeam(c, "team")
+                                    )
+                                )
+                            )
                         )
                     )
                 )
             );
         });
+
+        Manifold.LOGGER.info("Registered team spawnpoint command");
     }
 }
